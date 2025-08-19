@@ -49,11 +49,11 @@ def end():
     input()
     exit()
 
-operations1={'END':end}
+operations1={'END':end,'TERMINATE':end,'EXIT':end}
 operations2={'FACTORS':factorial,'FACTORIAL':factorial,'SQUAREROOT':squareroot}
 
-operations3={'ADD':add,'PLUS':add,'SUBTRACT':subtract,'MINUS':subtract,'MULTIPLY':multiply,'INTO':multiply,'DIVIDE':division,'POWER':exponentiation,'EXPONENTIAL':exponentiation,'LCM':lcm,'HCF':hcf}
-operations3a={'-':subtract,'+':add,'*':multiply,'/':division}
+operations3={'ADD':add,'PLUS':add,'SUM':add,'SUBTRACT':subtract,'MINUS':subtract,'MULTIPLY':multiply,'INTO':multiply,'DIVIDE':division,'POWER':exponentiation,'EXPONENTIAL':exponentiation,'LCM':lcm,'HCF':hcf}
+
 def main():
     print("WelCome to the Smart-Calculator")
     while True:
@@ -80,7 +80,8 @@ def main():
             elif word.upper() in operations1.keys():
                     l=extract_numbers_from_prompt(text)
                     r=operations1[word.upper()]()
-            else:
-                sorry()
+        else:
+            sorry()
+            break
 if __name__=="__main__":
     main()
