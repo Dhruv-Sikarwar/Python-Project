@@ -68,15 +68,6 @@ def main():
                     print("Something is Wrong")
                 finally:
                     break
-            elif word in operations3a.keys():
-                try:
-                    if word is '-+/*':
-                        r=operations3a[word](l[0],l[1])
-                        print(r)
-                except:
-                    print("something is wrong")
-                finally:
-                    break    
             elif word.upper() in operations2.keys():
                 try:
                     l=extract_numbers_from_prompt(text)
