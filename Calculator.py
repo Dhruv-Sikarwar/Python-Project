@@ -68,6 +68,14 @@ def factorial(a):
         n=n*a
         a-=1
     return n
+def parsing(text):
+    r=None
+    for i in text.split(' '):
+        while len(text)!=0:
+            if i in operations3.keys():
+                r=i
+                return r
+
 
 def sorry():
     print("Sorry I couldn't understand what you wrote please check your prompt and try again.")
@@ -86,29 +94,30 @@ def main():
         text=input("Enter your problem:\n")
         if True:
             for word in text.split(" "):
-                if word.upper() in operations3.keys():
-                    try:
-                        l=extract_numbers_from_prompt(text)
-                        r=operations3[word.upper()](*l)
-                        print(r)
-                    except:
-                        print("Something is Wrong")
-                    finally:
-                        break
-                elif word.upper() in operations2.keys():
-                    try:
-                        l=extract_numbers_from_prompt(text)
-                        r=operations2[word.upper()](l[0])
-                        print(r)
-                    except:
-                        print("Sorry you cannot operate this operation for different operations at same time.")
-                    finally:
-                        break
-                elif word.upper() in operations1.keys():
-                        l=extract_numbers_from_prompt(text)
-                        r=operations1[word.upper()]()
-            else:
-                sorry()
+                while parsing(text):
+                    if word.upper() in operations3.keys():
+                        try:
+                            l=extract_numbers_from_prompt(text)
+                            r=operations3[word.upper()](*l)
+                            print(r)
+                        except:
+                            print("Something is Wrong")
+                        finally:
+                            break
+                    elif word.upper() in operations2.keys():
+                        try:
+                            l=extract_numbers_from_prompt(text)
+                            r=operations2[word.upper()](l[0])
+                            print(r)
+                        except:
+                            print("Sorry you cannot operate this operation for different operations at same time.")
+                        finally:
+                            break
+                    elif word.upper() in operations1.keys():
+                            l=extract_numbers_from_prompt(text)
+                            r=operations1[word.upper()]()
+                else:
+                    sorry()
                            
                 
                 
