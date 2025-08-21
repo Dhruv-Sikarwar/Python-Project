@@ -6,7 +6,7 @@ def extract_numbers_from_prompt(text):
             try:
                 l.append(float(j))
             except ValueError:
-                pass
+               pass
     return l
 def add(*args):return sum(args)
 def subtract(*args):
@@ -18,7 +18,7 @@ def multiply(*args):
     if not args:
         return "No numbers are given"
     result=args[0]
-    for i in args:
+    for i in args[1:]:
         result*=i
     return result
 def division(*args):
@@ -78,7 +78,6 @@ def end():
 
 operations1={'END':end,'TERMINATE':end,'EXIT':end}
 operations2={'FACTORS':factorial,'FACTORIAL':factorial,'SQUAREROOT':squareroot}
-operations0={'+':add,'-':subtract,'*':multiply,'/':division}
 operations3={'ADD':add,'PLUS':add,'SUM':add,'SUBTRACT':subtract,'MINUS':subtract,'MULTIPLY':multiply,'INTO':multiply,'DIVIDE':division,'POWER':exponentiation,'EXPONENTIAL':exponentiation,'LCM':lcm,'HCF':hcf}
 
 def main():
@@ -108,8 +107,6 @@ def main():
                 elif word.upper() in operations1.keys():
                         l=extract_numbers_from_prompt(text)
                         r=operations1[word.upper()]()
-                else:
-                    operators(text)
             else:
                 sorry()
                            
