@@ -117,9 +117,7 @@ def main():
                         break
                 elif word.upper() in operations2.keys():
                     try:
-                        l=extract_numbers_from_prompt(text)
-                        r=operations2[word.upper()](l[0])
-                        print(r)
+                        print(parse(text))
                     except:
                         print("Sorry you cannot operate this operation for different operations at same time.")
                     finally:
