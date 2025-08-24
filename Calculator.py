@@ -3,10 +3,10 @@ def extract_numbers_from_prompt(text):
     l=[]
     for i in text.split(' '):
         for j in i.split(','):
-            try:
-                l.append(float(j))
-            except ValueError:
-               pass
+                try:
+                    l.append(float(j))
+                except ValueError:
+                    pass
     return l
 def add(*args):return sum(args)
 def subtract(*args):
@@ -68,6 +68,29 @@ def factorial(a):
         n=n*a
         a-=1
     return n
+def parse(text):
+    tokens = text.upper().split()
+    result, current_op = None, None
+
+    for token in tokens:
+        # If token is a number
+        try:
+            num = float(token)
+            if result is None:
+                result = num
+            else:
+                # Apply the current operation
+                if current_op is None:
+                    raise ValueError("No operator before number")
+                result = current_op(result, num)
+        except ValueError:
+            # If token is an operation word or symbol
+            if token in operations3:
+                current_op = operations3[token]
+
+    return result
+
+
 def sorry():
     print("Sorry I couldn't understand what you wrote please check your prompt and try again.")
 def end():
@@ -87,9 +110,7 @@ def main():
             for word in text.split(" "):
                 if word.upper() in operations3.keys():
                     try:
-                        l=extract_numbers_from_prompt(text)
-                        r=operations3[word.upper()](*l)
-                        print(r)
+                        print(parse(text))
                     except:
                         print("Something is Wrong")
                     finally:
